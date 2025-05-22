@@ -4,30 +4,29 @@ This is a basic project management website created using HTML, CSS, and JavaScri
 
 ## How to Run
 
-This project uses Python and Flask.
+This project uses Python, Flask, and MySQL (via Docker).
 
 1.  **Clone the repository:**
-    Open your terminal and run the following command, replacing `your-repository-url` with the actual URL of this repository:
     ```bash
     git clone your-repository-url
-    ```
-
-2.  **Navigate to the project directory:**
-    ```bash
     cd name-of-the-repository-directory
     ```
-    (Replace `name-of-the-repository-directory` with the actual folder name created by the clone command).
+
+2.  **Start the MySQL Database with Docker Compose:**
+    Ensure you have Docker and Docker Compose installed. From the project's root directory (where `docker-compose.yml` is located), run:
+    ```bash
+    docker-compose up -d
+    ```
+    This will start the MySQL container in detached mode. The database service name is `db`, and it uses the credentials and database name specified in `docker-compose.yml` (`project_user`, `project_password`, `project_db`).
 
 3.  **Create and activate a Python virtual environment:**
-    It's highly recommended to use a virtual environment to manage project dependencies.
     ```bash
     python3 -m venv venv
     source venv/bin/activate
     ```
-    (On Windows, the activation command is `venv\Scripts\activate`)
+    (On Windows: `venv\Scripts\activate`)
 
-4.  **Install dependencies:**
-    Install Flask and any other required packages from `requirements.txt`:
+4.  **Install Python dependencies:**
     ```bash
     pip install -r requirements.txt
     ```
@@ -36,11 +35,17 @@ This project uses Python and Flask.
     ```bash
     python app.py
     ```
+    When the Flask application starts, it will automatically attempt to create the necessary database tables (e.g., `task`) in the MySQL database if they don't already exist.
 
 6.  **Open the website:**
-    Once the Flask development server is running, it will typically tell you the address. Open your web browser and go to:
+    Open your web browser and go to:
     ```
     http://127.0.0.1:5000/
     ```
 
-The task management functionality is client-side (JavaScript) and data will be lost on page refresh.
+**To stop the MySQL Docker container:**
+```bash
+docker-compose down
+```
+
+The task management functionality now uses the MySQL database for persistence.

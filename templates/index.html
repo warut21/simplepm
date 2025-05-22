@@ -10,24 +10,38 @@
     <div class="container">
         <h1>Project Management Tool</h1>
 
-        <form id="addTaskForm">
+        <form id="addTaskForm" action="{{ url_for('add_task') }}" method="POST">
             <div>
                 <label for="taskName">Task Name:</label>
-                <input type="text" id="taskName" required>
+                <input type="text" id="taskName" name="taskName" required> <!-- Added name attribute -->
             </div>
             <div>
                 <label for="assignee">Assignee:</label>
-                <input type="text" id="assignee" required>
+                <input type="text" id="assignee" name="assignee"> <!-- Added name attribute, removed required -->
             </div>
             <div>
                 <label for="dueDate">Due Date:</label>
-                <input type="date" id="dueDate" required>
+                <input type="date" id="dueDate" name="dueDate"> <!-- Added name attribute, removed required -->
             </div>
             <button type="submit">Add Task</button>
         </form>
 
         <div id="taskList">
-            <!-- Tasks will be displayed here -->
+            {% for task in tasks %}
+            <div class="task {% if task.completed %}completed{% endif %}">
+                <div class="task-info"> <!-- Wrapped task details for better structure -->
+                    <p><strong>{{ task.name }}</strong></p>
+                    <p><small>Assignee: {{ task.assignee if task.assignee else 'N/A' }}</small></p>
+                    <p><small>Due Date: {{ task.due_date if task.due_date else 'N/A' }}</small></p>
+                </div>
+                <div class="task-actions">
+                    <a href="{{ url_for('complete_task', task_id=task.id) }}" class="btn complete-btn">{% if task.completed %}Undo{% else %}Complete{% endif %}</a>
+                    <a href="{{ url_for('delete_task', task_id=task.id) }}" class="btn delete-btn">Delete</a>
+                </div>
+            </div>
+            {% else %}
+            <p>No tasks found. Add a new task above!</p> <!-- Slightly different message -->
+            {% endfor %}
         </div>
     </div>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
