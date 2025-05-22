@@ -1,0 +1,105 @@
+/* Body styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Container for the main content */
+.container {
+    max-width: 800px;
+    margin: auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading styles */
+h1 {
+    text-align: center;
+    color: #222;
+}
+
+/* Form styles */
+#addTaskForm {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+/* Input fields and button styles */
+#addTaskForm input[type="text"],
+#addTaskForm input[type="date"],
+#addTaskForm button {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+/* Submit button specific styles */
+#addTaskForm button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    border: none; /* Remove default border for cleaner look */
+}
+
+#addTaskForm button[type="submit"]:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+/* Task list container */
+#taskList {
+    padding: 0; /* Remove padding if it's a div, list-style none for ul/li */
+}
+
+/* Individual task item styles */
+.task { /* This class is added in script.js */
+    background-color: #fff;
+    border: 1px solid #eee;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Completed task styles */
+.task.completed { /* This class is added in script.js when a task is completed */
+    text-decoration: line-through;
+    opacity: 0.7;
+}
+
+/* Buttons within each task item */
+.task button {
+    padding: 5px 10px;
+    margin-left: 5px;
+    cursor: pointer;
+    border-radius: 4px;
+    border: 1px solid transparent; /* Base transparent border */
+    color: white; /* Default text color for buttons */
+}
+
+/* Specific styles for complete button */
+.task .complete-btn {
+    background-color: #28a745; /* Green */
+}
+
+.task .complete-btn:hover {
+    background-color: #1e7e34; /* Darker green */
+}
+
+/* Specific styles for delete button */
+.task .delete-btn {
+    background-color: #dc3545; /* Red */
+}
+
+.task .delete-btn:hover {
+    background-color: #c82333; /* Darker red */
+}
