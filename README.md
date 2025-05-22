@@ -2,7 +2,9 @@
 
 This is a basic project management website created using HTML, CSS, and JavaScript. It allows users to add, view, complete, and delete tasks. The tasks are stored in the browser's memory and will be cleared when the page is refreshed.
 
-## How to Run on Linux
+## How to Run
+
+This project uses Python and Flask.
 
 1.  **Clone the repository:**
     Open your terminal and run the following command, replacing `your-repository-url` with the actual URL of this repository:
@@ -14,13 +16,31 @@ This is a basic project management website created using HTML, CSS, and JavaScri
     ```bash
     cd name-of-the-repository-directory
     ```
-    (Replace `name-of-the-repository-directory` with the actual folder name created by the clone command, usually the repository name).
+    (Replace `name-of-the-repository-directory` with the actual folder name created by the clone command).
 
-3.  **Open the website:**
-    Open the `index.html` file in your preferred web browser. You can often do this directly from the terminal:
+3.  **Create and activate a Python virtual environment:**
+    It's highly recommended to use a virtual environment to manage project dependencies.
     ```bash
-    xdg-open index.html
+    python3 -m venv venv
+    source venv/bin/activate
     ```
-    Alternatively, navigate to the project directory in your file manager and double-click `index.html`.
+    (On Windows, the activation command is `venv\Scripts\activate`)
 
-This website runs entirely in the browser; no server setup is required.
+4.  **Install dependencies:**
+    Install Flask and any other required packages from `requirements.txt`:
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+5.  **Run the Flask application:**
+    ```bash
+    python app.py
+    ```
+
+6.  **Open the website:**
+    Once the Flask development server is running, it will typically tell you the address. Open your web browser and go to:
+    ```
+    http://127.0.0.1:5000/
+    ```
+
+The task management functionality is client-side (JavaScript) and data will be lost on page refresh.
